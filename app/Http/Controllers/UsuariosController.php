@@ -15,8 +15,8 @@ class UsuariosController extends Controller
     {
         User::create([
 
-            'name'=>'Johnny Ocon',
-            'email'=>'JohnnyOcon798@gmail.com',
+            'name'=>'John',
+            'email'=>'John2005@gmail.com',
             'foto'=> '',
             'estado'=>1,
             'ultimo_login'=> now(),

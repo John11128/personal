@@ -1,44 +1,70 @@
-@extends('layouts.app')
+@extends('welcome')
 
-@section('content')
-<div class="container mt-4">
-    <h3>Mi perfil</h3>
-    
-    <div class="card">
-        <div class="card-body">
-            <form action="{{ route('profile.update') }}" method="POST">
-                @csrf
-                @method('PUT')
+@section('contenido')
+    <div class="content-wrapper">
+        <section class="content-header">
+            <h2> Gestor de Perfil </h2>
+        </section>
+        <section class="content">
+            <div class="box">
+                <div class="box-body">
+                    <form method="POST" action="{{ url('/perfil') }}" enctype="multipart/form-data">
+                            @csrf
+                        <div class="form-group">
+                            <div class="input-group">
+                                <span class="input-group-addon"> <i class="fa fa-user"></i> </span>
+                                <input type="text" class="form-control input-lg" name="name" required value="{{ Auth::user()->name }}"
+                                    placeholder="Nombre Completo">
+                            </div>
+                        </div>
 
-                <!-- Nombre -->
-                <div class="mb-3">
-                    <label for="name" class="form-label">Nombre completo</label>
-                    <input type="text" name="name" class="form-control" value="{{ old('name', auth()->user()->name) }}" required>
-                </div>
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <span class="input-group-addon"> <i class="fa fa-user"></i> </span>
+                                    <input type="email" class="form-control input-lg" name="email" required value="{{ Auth::user()->email }}"
+                                        placeholder="Correo Electrónico">
+                                </div>
+                                @error('email')
+                                    <p class="alert alert-danger">El Email ya se encuentra registrado</p>
+                                @enderror
+                            </div>
+                              <div class="form-group">
+                            <div class="input-group">
+                                <span class="input-group-addon"> <i class="fa fa-lock"></i> </span>
+                                <input type="password" class="form-control input-lg" name="password" placeholder="Nueva contraseña (opcional)" autocomplete="new-password">
+                                <input type="password" class="form-control input-lg" name="password_confirmation" placeholder="Confirmar contraseña">
+                               
+                            </div>
+                        </div>
 
-                <!-- Email -->
-                <div class="mb-3">
-                    <label for="email" class="form-label">Correo electrónico</label>
-                    <input type="email" name="email" class="form-control" value="{{ old('email', auth()->user()->email) }}" required>
-                </div>
-
-                <!-- Teléfono -->
-                <div class="mb-3">
-                    <label for="phone" class="form-label">Teléfono</label>
-                    <input type="text" name="phone" class="form-control" value="{{ old('phone', auth()->user()->phone ?? '') }}">
-                </div>
-
-                <!-- Cambiar contraseña -->
-                <div class="mb-3">
-                    <label for="password" class="form-label">Nueva contraseña</label>
-                    <input type="password" name="password" class="form-control">
-                    <small class="text-muted">Deja en blanco si no deseas cambiarla</small>
-                </div>
-
-                <!-- Botón -->
-                <button type="submit" class="btn btn-success">Guardar cambios</button>
-            </form>
-        </div>
+                        <div class="form-group">
+                                <input type="file" class="form-control input-lg" name="foto">
+                                <br>
+                                @if (auth()->user()->foto != "")
+                                  <img src="{{ url('storage/'.Auth()->user()->foto) }}" width="100px" height="100px"
+                                    class="img-thumbnail previsualizar" alt="">
+                                    @else
+                                      <img src="{{ url('storage/anonymous.png') }}" width="100px" height="100px"
+                                    class="img-thumbnail previsualizar" alt="">
+                                @endif
+                              
+                            </div>
+                        <div class="box-footer">
+                            <button type="submit" class="btn btn-primary pull-right">Actualizar Datos</button>
+                            @if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
     </div>
-</div>
+@endif
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </div>
+
 @endsection

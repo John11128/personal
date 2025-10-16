@@ -19,16 +19,19 @@ Route::get('Inicio', function () {
     return view('modulos.Inicio');
 });
 
-Route::get('/perfil', function () {
-    return view('modulos.users.profile.perfil');
-})->name('profile.show');
+//Mis Datos
+Route::get('/perfil', [ProfileController::class, 'verperfil'])->name('profile.edit');
+Route::post('/perfil', [ProfileController::class, 'ActualizarMisDatos'])->name('profile.update');
 
-// web.php
-Route::put('/perfil', [ProfileController::class, 'update'])->name('profile.update');
-
-
-
+//Usuarios
 // Route::get('Primer-Usuario', [UsuariosController::class, 'PrimerUsuario']);
+Route::get('Usuarios', [UsuariosController::class, 'index'])->name('usuarios.index');
+Route::post('Usuarios', [UsuariosController::class, 'store']);
+Route::get('Cambiar-Estado-Usuario/{estado}/{id}', [UsuariosController::class, 'CambiarEstado']);
+Route::get('Editar-Usuario/{id}', [UsuariosController::class, 'edit']);
+Route::post('Verificar-Usuario', [UsuariosController::class, 'VerificarUsuario']);
+Route::put('Actualizar-Usuario', [UsuariosController::class, 'update']);
+
 
 Auth::routes();
 Auth::routes();

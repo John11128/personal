@@ -5,6 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
+
 
 class UsuariosController extends Controller
 {
@@ -28,30 +32,61 @@ class UsuariosController extends Controller
         return response()->json(['message' => 'Usuario creado correctamente']);
     }
 
+    
+
     /**
      * Display a listing of the resource.
      */
-    public function index()
-    {
-        //
-    }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
+   public function index()
+        {
+            //
+            if (Auth::user()->roll != 'Administrador') {
+                    return redirect('Inicio')->with('error', 'No tienes permiso para acceder a esta sección.');
+                }
+                $usuarios= User::orderBy('id', 'asc')->paginate(50);
+                 return view('modulos.users.usuarios.index', compact('usuarios'));
+        }
 
     /**
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
     {
-        //
+        //crear un nuevo usuario
+                $validarEmail = request()->validate([
+                    'email' => 'unique:users,email',
+                ]);
+                $datos = request();
+                User::create([
+                    'name' => $datos['name'],
+                    'email' => $validarEmail['email'],
+                    'foto' => '',
+                    'estado' => 1,
+                    'ultimo_login' => now(),
+                    'roll' => $datos['roll'],
+                    'password' => Hash::make($datos['password']),
+                    
+                ]);
+                return redirect('Usuarios')->with('success', 'Usuario creado correctamente');
+                //editar un usuario
     }
+protected function authenticated(Request $request, $user)
+{
+    if ($user->estado == 0) {
+        Auth::logout();
+        return redirect('/')->withErrors(['email' => 'Tu usuario está desactivado.']);
+    }
+    $user->ultimo_login = now();
+    $user->save();
+}
 
+       public function CambiarEstado(string $id, int $estado)
+            {
+                //
+                User::find($id)->update(['estado' => $estado]);
+                return redirect('Usuarios')->with('success', 'Estado del usuario actualizado correctamente');
+            }
     /**
      * Display the specified resource.
      */
@@ -63,24 +98,54 @@ class UsuariosController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
-    {
-        //
-    }
-
+    public function edit($id_usuario)
+            {
+                $usuario = User::find($id_usuario);
+                return response()->json($usuario);
+            
+            }
+  public function VerificarUsuario(Request $request)
+            {
+            $user = User::find($request->id);
+            if($request->email != $user->email){
+            $emailExistente = User::where('email', $request->email)->exists();
+            if($emailExistente != null){
+                $verificacion = false;
+            }else{
+                $verificacion = true;
+            }
+            }else{
+                $verificacion = true;
+            }
+            return response()->json(['emailVerificacion' => $verificacion]);
+            }
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request)
     {
-        //
-    }
+         if (request('')){
+                    $ValidarPass = request()->validate([
+                    'password' => ['string','min:3']
+                ]);
+                $pass = true;
+                }else{
+                    $pass = false;
+                }
+                $datos = request();
+                $User = User::find($datos['id']);
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
-    }
-}
+                $User->name = $datos['name'];
+                $User->email = $datos['email'];
+                $User->roll = $datos['roll'];
+                         // Solo actualiza la contraseña si viene en el request y no está vacía
+        if (!empty($datos['password'])) {
+            $request->validate([
+                'password' => ['string', 'min:3']
+            ]);
+            $User->password = Hash::make($datos['password']);
+        }
+                $User->save();
+                return redirect('Usuarios')->with('success', 'Usuario actualizado correctamente');
+            }
+        }

@@ -1,268 +1,220 @@
 <header class="main-header">
     <!-- Logo -->
-    <a href="index2.html" class="logo">
+    <a href="{{ url('Inicio') }}" class="logo" style="background-color: #007005;">
       <!-- mini logo for sidebar mini 50x50 pixels -->
-      <span class="logo-mini"><b>P</b>PR</span>
+      <span class="logo-mini" style="background-color: #007005;"><b>SIP</b></span>
       <!-- logo for regular state and mobile devices -->
-      <span class="logo-lg"><b>personal</b>Práctica</span>
+      <span class="logo-lg" style="background-color: #007005;"><b>SisInvPer</b></span>
     </a>
     <!-- Header Navbar: style can be found in header.less -->
-    <nav class="navbar navbar-static-top">
+    <nav class="navbar navbar-static-top" style="background-color: #007005;">
       <!-- Sidebar toggle button-->
-      <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
-        <span class="sr-only">Toggle navigation</span>
+      <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button" style="background-color: #003603;">
+        <span class="sr-only"></span>
       </a>
 
       <div class="navbar-custom-menu">
         <ul class="nav navbar-nav">
           <!-- Messages: style can be found in dropdown.less-->
           <li class="dropdown messages-menu">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <i class="fa fa-envelope-o"></i>
-              <span class="label label-success">4</span>
-            </a>
+           
             <ul class="dropdown-menu">
-              <li class="header">You have 4 messages</li>
+              
               <li>
                 <!-- inner menu: contains the actual data -->
                 <ul class="menu">
-                  <li><!-- start message -->
-                    <a href="#">
-                      <div class="pull-left">
-                        <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
-                      </div>
-                      <h4>
-                        Support Team
-                        <small><i class="fa fa-clock-o"></i> 5 mins</small>
-                      </h4>
-                      <p>Why not buy a new awesome theme?</p>
-                    </a>
-                  </li>
+                   
                   <!-- end message -->
-                  <li>
-                    <a href="#">
-                      <div class="pull-left">
-                        <img src="dist/img/user3-128x128.jpg" class="img-circle" alt="User Image">
-                      </div>
-                      <h4>
-                        AdminLTE Design Team
-                        <small><i class="fa fa-clock-o"></i> 2 hours</small>
-                      </h4>
-                      <p>Why not buy a new awesome theme?</p>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <div class="pull-left">
-                        <img src="dist/img/user4-128x128.jpg" class="img-circle" alt="User Image">
-                      </div>
-                      <h4>
-                        Developers
-                        <small><i class="fa fa-clock-o"></i> Today</small>
-                      </h4>
-                      <p>Why not buy a new awesome theme?</p>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <div class="pull-left">
-                        <img src="dist/img/user3-128x128.jpg" class="img-circle" alt="User Image">
-                      </div>
-                      <h4>
-                        Sales Department
-                        <small><i class="fa fa-clock-o"></i> Yesterday</small>
-                      </h4>
-                      <p>Why not buy a new awesome theme?</p>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <div class="pull-left">
-                        <img src="dist/img/user4-128x128.jpg" class="img-circle" alt="User Image">
-                      </div>
-                      <h4>
-                        Reviewers
-                        <small><i class="fa fa-clock-o"></i> 2 days</small>
-                      </h4>
-                      <p>Why not buy a new awesome theme?</p>
-                    </a>
+                 
+                    
                   </li>
                 </ul>
               </li>
-              <li class="footer"><a href="#">See All Messages</a></li>
+              
             </ul>
           </li>
           <!-- Notifications: style can be found in dropdown.less -->
           <li class="dropdown notifications-menu">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <i class="fa fa-bell-o"></i>
-              <span class="label label-warning">10</span>
-            </a>
-            <ul class="dropdown-menu">
-              <li class="header">You have 10 notifications</li>
-              <li>
-                <!-- inner menu: contains the actual data -->
-                <ul class="menu">
-                  <li>
-                    <a href="#">
-                      <i class="fa fa-users text-aqua"></i> 5 new members joined today
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <i class="fa fa-warning text-yellow"></i> Very long description here that may not fit into the
-                      page and may cause design problems
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <i class="fa fa-users text-red"></i> 5 new members joined
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <i class="fa fa-shopping-cart text-green"></i> 25 sales made
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <i class="fa fa-user text-red"></i> You changed your username
-                    </a>
-                  </li>
-                </ul>
-              </li>
-              <li class="footer"><a href="#">View all</a></li>
-            </ul>
+            
           </li>
           <!-- Tasks: style can be found in dropdown.less -->
           <li class="dropdown tasks-menu">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <i class="fa fa-flag-o"></i>
-              <span class="label label-danger">9</span>
-            </a>
-            <ul class="dropdown-menu">
-              <li class="header">You have 9 tasks</li>
-              <li>
-                <!-- inner menu: contains the actual data -->
-                <ul class="menu">
-                  <li><!-- Task item -->
-                    <a href="#">
-                      <h3>
-                        Design some buttons
-                        <small class="pull-right">20%</small>
-                      </h3>
-                      <div class="progress xs">
-                        <div class="progress-bar progress-bar-aqua" style="width: 20%" role="progressbar"
-                             aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
-                          <span class="sr-only">20% Complete</span>
-                        </div>
-                      </div>
-                    </a>
-                  </li>
-                  <!-- end task item -->
-                  <li><!-- Task item -->
-                    <a href="#">
-                      <h3>
-                        Create a nice theme
-                        <small class="pull-right">40%</small>
-                      </h3>
-                      <div class="progress xs">
-                        <div class="progress-bar progress-bar-green" style="width: 40%" role="progressbar"
-                             aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
-                          <span class="sr-only">40% Complete</span>
-                        </div>
-                      </div>
-                    </a>
-                  </li>
-                  <!-- end task item -->
-                  <li><!-- Task item -->
-                    <a href="#">
-                      <h3>
-                        Some task I need to do
-                        <small class="pull-right">60%</small>
-                      </h3>
-                      <div class="progress xs">
-                        <div class="progress-bar progress-bar-red" style="width: 60%" role="progressbar"
-                             aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
-                          <span class="sr-only">60% Complete</span>
-                        </div>
-                      </div>
-                    </a>
-                  </li>
-                  <!-- end task item -->
-                  <li><!-- Task item -->
-                    <a href="#">
-                      <h3>
-                        Make beautiful transitions
-                        <small class="pull-right">80%</small>
-                      </h3>
-                      <div class="progress xs">
-                        <div class="progress-bar progress-bar-yellow" style="width: 80%" role="progressbar"
-                             aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
-                          <span class="sr-only">80% Complete</span>
-                        </div>
-                      </div>
-                    </a>
-                  </li>
-                  <!-- end task item -->
-                </ul>
-              </li>
-              <li class="footer">
-                <a href="#">View all tasks</a>
-              </li>
-            </ul>
+            
+             
           </li>
           <!-- User Account: style can be found in dropdown.less -->
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <img src="dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
-              <span class="hidden-xs">{{ auth()->user()->name }} </span>
+               @if (auth()->user()->foto != "")
+                                  <img src="{{ url('storage/'.Auth()->user()->foto) }}" class="img-circle" alt="User Image" width="20px" height="20px"
+                                    class="img-thumbnail previsualizar" alt="">
+                                    @else
+                                      <img src="{{ url('storage/anonymous.png') }}" class="img-circle" alt="User Image" width="20px" height="20px"
+                                    class="img-thumbnail previsualizar" alt="">
+                                @endif
+              <span class="hidden-xs">{{ auth()->user()->name }}</span>
             </a>
             <ul class="dropdown-menu">
               <!-- User image -->
               <li class="user-header">
-                <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                @if (auth()->user()->foto != "")
+                                  <img src="{{ url('storage/'.Auth()->user()->foto) }}" class="img-circle" alt="User Image"
+                                    class="img-thumbnail previsualizar" alt="">
+                                    @else
+                                      <img src="{{ url('storage/anonymous.png') }}" class="img-circle" alt="User Image"
+                                    class="img-thumbnail previsualizar" alt="">
+                                @endif
 
                 <p>
-                    {{ auth()->user()->name }} - {{ auth()->user()->roll }} 
-                    <small>{{ __('Miembro Desde') }} {{ auth()->user()->created_at->format('M. Y') }}</small>
+                   {{ auth()->user()->name }} - {{ auth()->user()->roll }}
+                  <small>Miembro desde {{ auth()->user()->created_at->format('d. M. Y') }}</small>
                 </p>
               </li>
               <!-- Menu Body -->
-              <li class="user-body">
-                <div class="row">
-                  <div class="col-xs-4 text-center">
-                    <a href="#">Followers</a>
-                  </div>
-                  <div class="col-xs-4 text-center">
-                    <a href="#">Sales</a>
-                  </div>
-                  <div class="col-xs-4 text-center">
-                    <a href="#">Friends</a>
-                  </div>
-                </div>
-                <!-- /.row -->
-              </li>
+             
               <!-- Menu Footer-->
               <li class="user-footer">
-                <a href="{{ route('profile.show') }}" class="btn pull-left">
-                  Perfil
-              </a>
-
-                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-inline">
-                  @csrf
-                  <button type="submit" class="pull-right">
-                      Cerrar sesión
-                  </button>
-              </form>
+                <div class="pull-left">
+                  <a href="{{ url('/perfil') }}" class="btn btn-default btn-flat">Perfil</a>
+                </div>
+                <div class="pull-right">
+                  <a href="{{ route('logout') }}" class="btn btn-danger btn-flat"
+                     onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Salir</a>
+                </div>
               </li>
+              <form method="post" id="logout-form" action="{{ route('logout') }}" style="display: none;">
+                  @csrf
+              </form>
             </ul>
           </li>
-          <!-- Control Sidebar Toggle Button -->
-          <li>
-            <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>
-          </li>
+          <!-- Control Sidebar menú de opciones del sistema -->
+          <li class="dropdown">
+    <a href="#" class="dropdown-toggle" data-toggle="dropdown" title="Opciones de sistema">
+        <i class="fa fa-gears"></i>
+    </a>
+    <ul class="dropdown-menu">
+        <li>
+            <a href="#" id="toggle-theme">
+                <i class="fa fa-adjust"></i> Cambiar a <span id="theme-text">oscuro</span>
+            </a>
+        </li>
+    </ul>
+</li>
         </ul>
       </div>
     </nav>
   </header>
+
+  <style>
+/* Puedes ajustar estos estilos a tu gusto */
+html.dark-mode {
+    background-color: #222 !important;
+    color: #f1f1f1 !important;
+}
+html.dark-mode body,
+html.dark-mode .main-header,
+html.dark-mode .navbar,
+html.dark-mode .sidebar,
+html.dark-mode .box,
+html.dark-mode .content-wrapper,
+html.dark-mode .content,
+html.dark-mode .modal-content {
+    background-color: #222 !important;
+    color: #f1f1f1 !important;
+    border-color: #555 !important;
+}
+html.dark-mode .box,
+html.dark-mode .modal-content {
+    border-color: #444 !important;
+}
+html.dark-mode .form-control,
+html.dark-mode input,
+html.dark-mode select,
+html.dark-mode textarea {
+    background-color: #333 !important;
+    color: #f1f1f1 !important;
+    border-color: #555 !important;
+}
+html.dark-mode .table,
+html.dark-mode .DataTables_wrapper .DataTables_paginate,
+html.dark-mode .table-striped > tbody > tr:nth-of-type(odd) {
+    background-color: #222 !important;
+    color: #f1f1f1 !important;
+}
+html.dark-mode .table-striped > tbody > tr:nth-of-type(even) {
+    background-color: #2a2a2a !important;
+}
+html.dark-mode .btn,
+html.dark-mode .btn-default,
+html.dark-mode .btn-primary,
+html.dark-mode .btn-danger,
+html.dark-mode .btn-success,
+html.dark-mode .btn-warning {
+    background-color: #444 !important;
+    color: #f1f1f1 !important;
+    border-color: #555 !important;
+}
+
+/* Bordes visibles para todos los elementos principales */
+html.body .box,
+html.body .modal-content,
+html.body .form-control,
+html.body input,
+html.body select,
+html.body textarea,
+html.body .table,
+html.body .btn,
+html.body .navbar,
+html.body .sidebar,
+html.body .content-wrapper,
+html.body .content,
+html.body .logo,
+html.body .user-header {
+    border: 1.5px solid #bbb !important;
+    border-radius: 6px !important;
+}
+
+/* Bordes más notorios en modo oscuro */
+html.dark-mode .box,
+html.dark-mode .modal-content,
+html.dark-mode .form-control,
+html.dark-mode input,
+html.dark-mode select,
+html.dark-mode textarea,
+html.dark-mode .table,
+html.dark-mode .btn,
+html.dark-mode .navbar,
+html.dark-mode .sidebar,
+html.dark-mode .content-wrapper,
+html.dark-mode .content,
+html.dark-mode .logo,
+html.dark-mode .logo-mini,
+html.dark-mode .user-header {
+    border: 1.5px solid #666 !important;
+    border-radius: 6px !important;
+}
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Cargar preferencia guardada
+    if(localStorage.getItem('theme') === 'dark') {
+        document.documentElement.classList.add('dark-mode');
+        document.getElementById('theme-text').innerText = 'claro';
+    }
+
+    document.getElementById('toggle-theme').addEventListener('click', function(e) {
+        e.preventDefault();
+        document.documentElement.classList.toggle('dark-mode');
+        // Cambia el texto del menú
+        let themeText = document.getElementById('theme-text');
+        if(document.documentElement.classList.contains('dark-mode')) {
+            themeText.innerText = 'claro';
+            localStorage.setItem('theme', 'dark');
+        } else {
+            themeText.innerText = 'oscuro';
+            localStorage.setItem('theme', 'light');
+        }
+    });
+});
+</script>

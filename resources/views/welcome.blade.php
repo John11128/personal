@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Personal | Dashboard</title>
+  <title>VIBM | Dashboard</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
  <!-- Bootstrap 3.3.7 -->
@@ -25,6 +25,11 @@
   <link rel="stylesheet" href="{{ url('bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css') }}">
   <!-- Daterange picker -->
   <link rel="stylesheet" href="{{ url('bower_components/bootstrap-daterangepicker/daterangepicker.css') }}">
+
+  <!-- DataTables -->
+  <link rel="stylesheet" href="{{ url('bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css') }}">
+  <link rel="stylesheet" href="{{ url('bower_components/datatables.net-bs/css/responsive.bootstrap.min.css') }}">
+
   <!-- bootstrap wysihtml5 - text editor -->
   <link rel="stylesheet" href="plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
 
@@ -35,13 +40,24 @@
   <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
   <![endif]-->
 
+<!-- Agrega esto en el <head> -->
+<link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
+
   <!-- Google Font -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
- <!-- jQuery 3 -->
+  {{-- Leaflet --}}
+  <link rel="stylesheet" href="{{ url('bower_components/leaflet/dist/leaflet.css') }}">
+     <link rel="stylesheet" href="{{url('https://unpkg.com/leaflet/dist/leaflet.css')}}" />
+  <!-- jQuery 3 -->
 <script src="{{ url('bower_components/jquery/dist/jquery.min.js') }}"></script>
 <!-- jQuery UI 1.11.4 -->
 <script src="{{ url('bower_components/jquery-ui/jquery-ui.min.js') }}"></script>
-
+<script>
+        // Aplica dark-mode antes de que cargue el contenido
+        if (localStorage.getItem('theme') === 'dark') {
+            document.documentElement.classList.toggle('dark-mode');
+        }
+    </script>
 </head>
 <body class="hold-transition skin-blue sidebar-mini login-page">
 
@@ -58,11 +74,6 @@
 
 @endif
 
-
-
-
-
-  
 
 
 
@@ -84,6 +95,7 @@
 <script src="{{ url('bower_components/jquery-knob/dist/jquery.knob.min.js') }}"></script>
 <!-- daterangepicker -->
 <script src="{{ url('bower_components/moment/min/moment.min.js') }}"></script>
+
 <script src="{{ url('bower_components/bootstrap-daterangepicker/daterangepicker.js') }}"></script>
 <!-- datepicker -->
 <script src="{{ url('bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js') }}"></script>
@@ -99,5 +111,49 @@
 <script src="{{ url('dist/js/pages/dashboard.js') }}"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="{{ url('dist/js/demo.js') }}"></script>
+
+{{-- Data Tables --}}
+<script src="{{ url('bower_components/datatables.net/js/jquery.dataTables.min.js') }}"></script>
+<script src="{{ url('bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js') }}"></script>
+<script src="{{ url('bower_components/datatables.net-bs/js/dataTables.responsive.min.js') }}"></script>
+
+{{-- Sweet Alert2 --}}
+<script src="{{ url('https://cdn.jsdelivr.net/npm/sweetalert2@11') }}"></script>
+
+{{-- Leaflet --}}
+<script src="{{ url('https://unpkg.com/leaflet/dist/leaflet.js') }}"></script>
+
+{{-- Plantillas --}}
+<script src="{{ url('js/etapas.js') }}"></script>
+<script src="{{ url('js/usuarios.js') }}"></script>
+<script src="{{ asset('js/cedula-formato.js') }}"></script>
+<script src="{{ asset('js/protagonista.js') }}"></script>
+<script src="{{ asset('js/mapas.js') }}"></script>
+<script src="{{ asset('js/estados.js') }}"></script>
+
+@if (session('success'))
+<script type="text/javascript">
+    Swal.fire({
+        icon: "success",
+        title: '{{ session('success') }}',
+        confirmButtonText: 'Aceptar'
+    });
+</script>
+@endif
+
+<style>
+.datos-lote {
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: all 0.5s ease-in-out;
+}
+
+.datos-lote.show {
+    max-height: 500px; /* lo suficientemente grande para el contenido */
+    opacity: 1;
+}
+</style>
+
 </body>
 </html>

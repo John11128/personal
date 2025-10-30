@@ -15,6 +15,12 @@
               <i class="fa fa-users"></i> <span>Usuarios</span>
             </a>
         </li>
+        <li>
+            <a href="{{ url('Productos') }}">
+              <i class="fa fa-product-hunt"></i> <span>Productos</span>
+            </a>
+        </li>
+
       </ul>
     </section>
     <!-- /.sidebar -->

@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\UsuariosController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ProductosController;
 
 
 // Route::get('/', function () {
@@ -32,6 +33,8 @@ Route::get('Editar-Usuario/{id}', [UsuariosController::class, 'edit']);
 Route::post('Verificar-Usuario', [UsuariosController::class, 'VerificarUsuario']);
 Route::put('Actualizar-Usuario', [UsuariosController::class, 'update']);
 
+//Productos
+Route::get('Productos', [ProductosController::class, 'index'])->name('productos.index');
 
 Auth::routes();
 Auth::routes();

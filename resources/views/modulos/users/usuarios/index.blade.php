@@ -71,7 +71,6 @@
                      <td>
                         
                             <button class="btn btn-warning btnEditarUsuario" idUsuario="{{ $user->id }}" data-toggle="modal" data-target="#modalEditarUsuario"><i class="fa fa-pencil"></i></button>
-                            <button class="btn btn-danger btnEliminarUsuario" idUsuario="{{ $user->id }}"><i class="fa fa-trash"></i></button>
                      </td>
                    </tr>
                   

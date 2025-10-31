@@ -24,7 +24,7 @@ class UsuariosController extends Controller
             'foto'=> '',
             'estado'=>1,
             'ultimo_login'=> now(),
-            'rol'=>'Administrador',
+            'roll'=>'Administrador',
             'password'=>Hash::make('2005'),
             'id_sistema'=>0, 
 

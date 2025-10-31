@@ -16,6 +16,11 @@
             </a>
         </li>
         <li>
+            <a href="{{ url('Categorias') }}">
+              <i class="fa fa-list"></i> <span>Categorias</span>
+            </a>
+        </li>
+        <li>
             <a href="{{ url('Productos') }}">
               <i class="fa fa-product-hunt"></i> <span>Productos</span>
             </a>

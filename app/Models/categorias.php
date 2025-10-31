@@ -20,6 +20,22 @@ class Categorias extends Model
         'usuario_id',
     ];
 
+    // Accessors to expose friendly attribute names used by views
+    public function getNombreAttribute()
+    {
+        return $this->attributes['nombre_c'] ?? null;
+    }
+
+    public function getDescripcionAttribute()
+    {
+        return $this->attributes['descripcion_c'] ?? null;
+    }
+
+    public function getEstadoAttribute()
+    {
+        return (bool) ($this->attributes['activo_c'] ?? false);
+    }
+
     /**
      * Relaciones
      */

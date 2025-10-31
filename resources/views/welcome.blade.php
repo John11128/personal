@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>VIBM | Dashboard</title>
+  <title>SisInvPer | Dashboard</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
  <!-- Bootstrap 3.3.7 -->
@@ -59,19 +59,17 @@
         }
     </script>
 </head>
-<body class="hold-transition skin-blue sidebar-mini login-page">
-
 @if(Auth::user())
-<div class="wrapper">
-   @include('modulos.users.cabecera')  <!--  crear cabecera -->
-  @include('modulos.users.menu')  <!--  crear menu -->
+<body class="hold-transition skin-blue sidebar-mini">
+    <div class="wrapper">
+       @include('modulos.users.cabecera')  <!--  crear cabecera -->
+      @include('modulos.users.menu')  <!--  crear menu -->
 
-  @yield('contenido')
-  </div>
-
+      @yield('contenido')
+    </div>
 @else
-@yield('ingresar')
-
+<body class="hold-transition skin-blue sidebar-mini login-page">
+    @yield('ingresar')
 @endif
 
 
@@ -89,8 +87,8 @@
 <!-- Sparkline -->
 <script src="{{ url('bower_components/jquery-sparkline/dist/jquery.sparkline.min.js') }}"></script>
 <!-- jvectormap -->
-<script src="plugins/jvectormap/jquery-jvectormap-1.2.2.min.js') }}"></script>
-<script src="plugins/jvectormap/jquery-jvectormap-world-mill-en.js') }}"></script>
+<script src="{{ url('plugins/jvectormap/jquery-jvectormap-1.2.2.min.js') }}"></script>
+<script src="{{ url('plugins/jvectormap/jquery-jvectormap-world-mill-en.js') }}"></script>
 <!-- jQuery Knob Chart -->
 <script src="{{ url('bower_components/jquery-knob/dist/jquery.knob.min.js') }}"></script>
 <!-- daterangepicker -->
@@ -100,7 +98,7 @@
 <!-- datepicker -->
 <script src="{{ url('bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js') }}"></script>
 <!-- Bootstrap WYSIHTML5 -->
-<script src="plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js') }}"></script>
+<script src="{{ url('plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js') }}"></script>
 <!-- Slimscroll -->
 <script src="{{ url('bower_components/jquery-slimscroll/jquery.slimscroll.min.js') }}"></script>
 <!-- FastClick -->

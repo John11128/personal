@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Storage;
 
 class Productos extends Model
 {
@@ -46,12 +47,12 @@ class Productos extends Model
      */
     public function scopeActivos($query)
     {
-        return $query->where('activo', true);
+        return $query->where('activo_p', true);
     }
 
     public function scopeStockBajo($query, $limite = 5)
     {
-        return $query->where('stock', '<', $limite);
+        return $query->where('stock_p', '<', $limite);
     }
 
     /**
@@ -59,9 +60,50 @@ class Productos extends Model
      */
     public function getImagenUrlAttribute()
     {
-        if ($this->imagen) {
-            return asset('storage/productos/' . $this->imagen);
+        // Devuelve la URL pública de la imagen si existe o una imagen por defecto
+        if (!empty($this->imagen_p)) {
+            return asset('storage/' . $this->imagen_p);
         }
-        return asset('images/default-product.png'); // Imagen por defecto
+        // fallback: hay un default.png en storage/app/public
+        return asset('storage/default.png');
+    }
+
+    /**
+     * Accessors to expose friendly attribute names used by the views
+     * (so views can use $producto->nombre, $producto->stock, etc.)
+     */
+    public function getIdAttribute()
+    {
+        return $this->attributes['id_p'] ?? null;
+    }
+
+    public function getNombreAttribute()
+    {
+        return $this->attributes['nombre_p'] ?? null;
+    }
+
+    public function getDescripcionAttribute()
+    {
+        return $this->attributes['descripcion_p'] ?? null;
+    }
+
+    public function getStockAttribute()
+    {
+        return $this->attributes['stock_p'] ?? 0;
+    }
+
+    public function getPrecioCompraAttribute()
+    {
+        return $this->attributes['precio_compra_p'] ?? 0;
+    }
+
+    public function getPrecioVentaAttribute()
+    {
+        return $this->attributes['precio_venta_p'] ?? 0;
+    }
+
+    public function getImagenAttribute()
+    {
+        return $this->attributes['imagen_p'] ?? null;
     }
 }

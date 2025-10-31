@@ -8,15 +8,12 @@
     <section class="content">
         <div class="box box-primary">
             <div class="box-header with-border">
-                
+                <h3 class="box-title">Listado de categorías</h3>
+                <div class="box-tools pull-right">
+                    <a href="{{ route('categorias.index') }}" class="btn btn-sm btn-default pull-right">Ver Activos</a>
+                </div>
             </div>
             <div class="box-body">
-
-                <div class="box-tools">
-                    <a href="{{ route('categorias.create') }}" class="btn btn-sm btn-success">+ Nueva Categoría</a>
-                    <a href="{{ route('categorias.desactivados') }}" class="btn btn-sm btn-default pull-right">Ver Desactivados</a>
-                </div>
-
                 @if(session('success'))
                     <div class="alert alert-success">{{ session('success') }}</div>
                 @endif
@@ -49,7 +46,6 @@
                                 <a href="{{ route('categorias.desactivar', $cat->id_c) }}" class="btn btn-xs {{ $cat->estado ? 'btn-warning' : 'btn-success' }}">
                                     {{ $cat->estado ? 'Desactivar' : 'Activar' }}
                                 </a>
-                                
                             </td>
                         </tr>
                         @endforeach

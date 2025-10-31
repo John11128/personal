@@ -20,7 +20,7 @@ class ProductosController extends Controller
         if (Auth::user()->roll != 'Administrador') {
                     return redirect('Inicio')->with('error', 'No tienes permiso para acceder a esta sección.');
                 }
-        $productos = Productos::with('categoria', 'usuario')->orderBy('id_p', 'desc')->get();
+        $productos = Productos::with('categoria', 'usuario')->orderBy('id_p', 'desc')->where('activo_p', true)->paginate(50);
         return view('modulos.productos.index', compact('productos'));
     }
 
@@ -176,6 +176,15 @@ class ProductosController extends Controller
         $producto->delete();
 
         return redirect()->route('productos.index')->with('success', 'Producto eliminado correctamente.');
+    }
+
+    public function desactivados()
+    {
+        if (Auth::user()->roll != 'Administrador') {
+            return redirect('Inicio')->with('error', 'No tienes permiso para acceder a esta sección.');
+        }
+        $productos = Productos::with('categoria', 'usuario')->orderBy('id_p', 'desc')->where('activo_p', false)->paginate(50);
+        return view('modulos.productos.desactivados', compact('productos'));
     }
 }
 

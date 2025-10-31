@@ -11,7 +11,7 @@ class CategoriasController extends Controller
 {
     public function index()
     {
-        $categorias = Categorias::orderBy('id_c', 'desc')->get();
+        $categorias = Categorias::orderBy('id_c', 'desc')->where('activo_c', 1)->paginate(50);
         return view('modulos.categorias.index', compact('categorias'));
     }
 
@@ -67,6 +67,12 @@ class CategoriasController extends Controller
         $categoria->save();
 
         return redirect()->route('categorias.index')->with('success', 'Estado de la categoría actualizado.');
+    }
+
+    public function desactivados()
+    {
+        $categorias = Categorias::orderBy('id_c', 'desc')->where('activo_c', 0)->paginate(50);
+        return view('modulos.categorias.desactivados', compact('categorias'));
     }
 
     public function destroy($id)

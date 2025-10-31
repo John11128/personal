@@ -36,6 +36,7 @@ Route::put('Actualizar-Usuario', [UsuariosController::class, 'update']);
 
 
 //Categorias
+Route::middleware(['auth'])->group(function () {
 Route::get('Categorias', [CategoriasController::class, 'index'])->name('categorias.index');
 Route::get('Categorias/crear', [CategoriasController::class, 'create'])->name('categorias.create');
 Route::post('Categorias', [CategoriasController::class, 'store'])->name('categorias.store');
@@ -43,7 +44,8 @@ Route::get('Categorias/{id}/editar', [CategoriasController::class, 'edit'])->nam
 Route::put('Categorias/{id}', [CategoriasController::class, 'update'])->name('categorias.update');
 Route::resource('categorias', CategoriasController::class)->except(['show']);
 Route::get('categorias/{id}/desactivar', [CategoriasController::class, 'desactivar'])->name('categorias.desactivar');
-
+Route::get('Categorias/Desactivados', [CategoriasController::class, 'desactivados'])->name('categorias.desactivados');
+});
 
 
 
@@ -56,6 +58,7 @@ Route::middleware(['auth'])->group(function () {
     Route::put('/Productos/{id}', [ProductosController::class, 'update'])->name('productos.update');
     Route::put('/Productos/{id}/toggle', [ProductosController::class, 'toggleActivo'])->name('productos.toggle');
     Route::delete('/Productos/{id}', [ProductosController::class, 'destroy'])->name('productos.destroy');
+    Route::get('/Productos/Desactivados', [ProductosController::class, 'desactivados'])->name('productos.desactivados');
 });
 
 

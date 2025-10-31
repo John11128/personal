@@ -17,11 +17,9 @@
 
              <div class="box-body">
 
-              
-     <div class="box-tools">
-                    <a href="{{ route('productos.create') }}" class="btn btn-sm btn-success">+ Nuevo Producto</a>
-                    <a href="{{ route('productos.desactivados') }}" class="btn btn-sm btn-default pull-right">Ver Desactivados</a>
-                </div>
+
+
+              <a href="{{ route('productos.index') }}" class="btn btn-default mb-3 pull-right">Ver Activos</a>
     @if(session('success'))
         <div class="alert alert-success">{{ session('success') }}</div>
     @endif

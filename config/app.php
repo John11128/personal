@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'Laravel'),
+    'name' => env('APP_NAME', 'SISINVPER'),
 
     /*
     |--------------------------------------------------------------------------
@@ -29,7 +29,7 @@ return [
     'env' => env('APP_ENV', 'production'),
 
     /*
-    |--------------------------------------------------------------------------
+    |------------------------------------------------------ 
     | Application Debug Mode
     |--------------------------------------------------------------------------
     |
@@ -52,7 +52,7 @@ return [
     |
     */
 
-    'url' => env('APP_URL', 'http://localhost'),
+    'url' => env('APP_URL', 'http://SISINVPER'),
 
     /*
     |--------------------------------------------------------------------------
@@ -78,11 +78,11 @@ return [
     |
     */
 
-    'locale' => env('APP_LOCALE', 'en'),
+    'locale' => env('APP_LOCALE', 'es'),
 
     'fallback_locale' => env('APP_FALLBACK_LOCALE', 'en'),
 
-    'faker_locale' => env('APP_FAKER_LOCALE', 'en_US'),
+    'faker_locale' => env('APP_FAKER_LOCALE', 'es_ES'),
 
     /*
     |--------------------------------------------------------------------------

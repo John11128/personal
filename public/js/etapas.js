@@ -1,24 +1,24 @@
-$(".table").DataTable({
-    ordering: false,
-    pageLength: 10, // 👈 Puedes ajustar este valor
-    lengthMenu: [ [10, 25, 50], [10, 25, 50] ],
-    language: {
-        search: "Buscar:",
-        emptyTable: "No hay datos disponibles en la tabla",
-        zeroRecords: "No se encontraron resultados",
-        info: "Mostrando _START_ a _END_ de _TOTAL_ entradas",
-        infoEmpty: "Mostrando 0 a 0 de 0 entradas",
-        infoFiltered: "(filtrado de _MAX_ entradas totales)",
-        paginate: {
-            first: "Primero",
-            last: "Último",
-            next: "Siguiente",
-            previous: "Anterior"
-        },
-        loadingRecords: "Cargando...",
-        lengthMenu: "Mostrar _MENU_ entradas"
-    }
-});
+// $(".table").DataTable({
+//     ordering: false,
+//     pageLength: 10, // 👈 Puedes ajustar este valor
+//     lengthMenu: [ [10, 25, 50], [10, 25, 50] ],
+//     language: {
+//         search: "Buscar:",
+//         emptyTable: "No hay datos disponibles en la tabla",
+//         zeroRecords: "No se encontraron resultados",
+//         info: "Mostrando _START_ a _END_ de _TOTAL_ entradas",
+//         infoEmpty: "Mostrando 0 a 0 de 0 entradas",
+//         infoFiltered: "(filtrado de _MAX_ entradas totales)",
+//         paginate: {
+//             first: "Primero",
+//             last: "Último",
+//             next: "Siguiente",
+//             previous: "Anterior"
+//         },
+//         loadingRecords: "Cargando...",
+//         lengthMenu: "Mostrar _MENU_ entradas"
+//     }
+// });
 
 //Editar Etapa
 $(".table").on('click', '.btnEditarEtapa', function() {

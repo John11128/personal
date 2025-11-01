@@ -9,52 +9,18 @@
         <div class="box box-primary">
             <div class="box-header with-border">
                 
-            </div>
-            <div class="box-body">
-
-                <div class="box-tools">
                     <a href="{{ route('categorias.create') }}" class="btn btn-sm btn-success">+ Nueva Categoría</a>
                     <a href="{{ route('categorias.desactivados') }}" class="btn btn-sm btn-default pull-right">Ver Desactivados</a>
-                </div>
+                
 
                 @if(session('success'))
                     <div class="alert alert-success">{{ session('success') }}</div>
                 @endif
-
-                <table class="table table-hover table-striped">
-                    <thead>
-                        <tr>
-                            <th>#</th>
-                            <th>Nombre</th>
-                            <th>Descripción</th>
-                            <th>Estado</th>
-                            <th>Acciones</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach($categorias as $cat)
-                        <tr>
-                            <td>{{ $cat->id_c }}</td>
-                            <td>{{ $cat->nombre }}</td>
-                            <td>{{ $cat->descripcion }}</td>
-                            <td>
-                                @if($cat->estado)
-                                    <span class="label label-success">Activa</span>
-                                @else
-                                    <span class="label label-default">Inactiva</span>
-                                @endif
-                            </td>
-                            <td>
-                                <a href="{{ route('categorias.edit', $cat->id_c) }}" class="btn btn-xs btn-primary">Editar</a>
-                                <a href="{{ route('categorias.desactivar', $cat->id_c) }}" class="btn btn-xs {{ $cat->estado ? 'btn-warning' : 'btn-success' }}">
-                                    {{ $cat->estado ? 'Desactivar' : 'Activar' }}
-                                </a>
-                                
-                            </td>
-                        </tr>
-                        @endforeach
-                    </tbody>
-                </table>
+            </div>
+            
+            <div class="box-body">
+                <livewire:category-table /> 
+                
             </div>
         </div>
     </section>

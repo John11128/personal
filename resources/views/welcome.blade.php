@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
+    @livewireStyles
+
+@livewireScripts
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>SisInvPer | Dashboard</title>
@@ -71,7 +74,6 @@
 <body class="hold-transition skin-blue sidebar-mini login-page">
     @yield('ingresar')
 @endif
-
 
 
 

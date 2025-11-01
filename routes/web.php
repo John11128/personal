@@ -69,7 +69,9 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/Movimientos', [MovimientosController::class, 'store'])->name('movimientos.store');
     Route::get('/Movimientos/{id}/editar', [MovimientosController::class, 'edit'])->name('movimientos.edit');
     Route::put('/Movimientos/{id}', [MovimientosController::class, 'update'])->name('movimientos.update');
-    Route::delete('/Movimientos/{id}', [MovimientosController::class, 'destroy'])->name('movimientos.destroy');
+    Route::get('/Movimientos/desactivados', [MovimientosController::class, 'desactivados'])->name('movimientos.desactivados');
+    Route::post('/Movimientos/{id}/deshacer', [MovimientosController::class, 'deshacer'])->name('movimientos.deshacer');
+
 });
 
 Auth::routes();

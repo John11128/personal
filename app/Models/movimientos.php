@@ -17,4 +17,13 @@ class movimientos extends Model
         'cantidad_m',
         'usuario_id',
     ];
+
+    public function producto()
+    {
+        return $this->belongsTo(Productos::class, 'producto_id');
+    }
+    public function usuario()
+    {
+        return $this->belongsTo(User::class, 'usuario_id');
+    }
 }

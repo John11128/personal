@@ -59,4 +59,10 @@ class Categorias extends Model
     {
         return $query->where('activo_c', true);
     }
+
+    public function desactivate()
+    {
+        $this->activo_c = !$this->activo_c;
+        $this->save();
+    }   
 }

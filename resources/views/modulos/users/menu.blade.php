@@ -25,6 +25,11 @@
               <i class="fa fa-product-hunt"></i> <span>Productos</span>
             </a>
         </li>
+        <li>
+            <a href="{{ url('Movimientos') }}">
+              <i class="fa fa-exchange"></i> <span>Movimientos</span>
+            </a>
+        </li>
 
       </ul>
     </section>

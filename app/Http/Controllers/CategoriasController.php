@@ -66,6 +66,11 @@ class CategoriasController extends Controller
         $categoria->activo_c = !$categoria->activo_c;
         $categoria->save();
 
+        //cambiamos el estado de los productos asociados
+           $categoria->productos()->update([
+               'activo_p' => $categoria->activo_c
+           ]);
+
         return redirect()->route('categorias.index')->with('success', 'Estado de la categoría actualizado.');
     }
 

@@ -6,7 +6,7 @@ use App\Http\Controllers\UsuariosController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProductosController;
 use App\Http\Controllers\CategoriasController;
-
+use App\Http\Controllers\MovimientosController;
 
 // Route::get('/', function () {
 //     return view('welcome');
@@ -61,6 +61,16 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/Productos/Desactivados', [ProductosController::class, 'desactivados'])->name('productos.desactivados');
 });
 
+//Movimientos
+Route::middleware(['auth'])->group(function () {
+    // Definir rutas para movimientos aquí
+    Route::get('/Movimientos', [MovimientosController::class, 'index'])->name('movimientos.index');
+    Route::get('/Movimientos/crear', [MovimientosController::class, 'create'])->name('movimientos.create');
+    Route::post('/Movimientos', [MovimientosController::class, 'store'])->name('movimientos.store');
+    Route::get('/Movimientos/{id}/editar', [MovimientosController::class, 'edit'])->name('movimientos.edit');
+    Route::put('/Movimientos/{id}', [MovimientosController::class, 'update'])->name('movimientos.update');
+    Route::delete('/Movimientos/{id}', [MovimientosController::class, 'destroy'])->name('movimientos.destroy');
+});
 
 Auth::routes();
 Auth::routes();

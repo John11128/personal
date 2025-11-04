@@ -7,6 +7,7 @@ use App\Models\movimientos;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use App\Models\Productos;
+use App\Models\Reportes;
 
 class MovimientosController extends Controller
 {
@@ -64,6 +65,19 @@ public function store(Request $request)
         'cantidad_m' => $request->input('cantidad_m'),
         'usuario_id' => Auth::user()->id,
     ]);
+    Reportes::create([
+    'tipo_r' => 'movimiento',
+    'titulo_r' => "Movimiento de tipo {$request->tipo_m}",
+    'descripcion_r' => "Se registró un movimiento de {$request->tipo_m} para el producto ID {$request->producto_id}.",
+    'detalle_r' => [
+        'producto_id' => $request->producto_id,
+        'cantidad' => $request->cantidad_m,
+        'tipo' => $request->tipo_m,
+        'usuario' => Auth::user()->name ?? 'Desconocido',
+    ],
+    'usuario_id' => Auth::id(),
+]);
+
 
     return redirect()->route('movimientos.index')->with('success', 'Movimiento creado correctamente.');
 }
@@ -168,6 +182,7 @@ public function store(Request $request)
 
     return back()->with('success', 'Movimiento deshecho correctamente.');
 }
+
 
 
 }

@@ -8,6 +8,7 @@ use App\Models\Productos;
 use App\Models\Categorias;
 use App\Models\User;
 use Illuminate\Support\Facades\Storage;
+use App\Models\Reportes;
 
 class ProductosController extends Controller
 {
@@ -81,6 +82,20 @@ class ProductosController extends Controller
             'usuario_id' => Auth::id(),
             'activo_p' => true,
         ]);
+        Reportes::create([
+    'tipo_r' => 'producto',
+    'titulo_r' => 'Producto agregado',
+    'descripcion_r' => "El producto '{$request->nombre_p}' fue agregado al inventario.",
+    'detalle_r' => [
+        'codigo' => $request->codigo_p,
+        'nombre' => $request->nombre_p,
+        'stock' => $request->stock_p,
+        'categoria' => $request->categoria_id,
+        'usuario' => Auth::user()->name ?? 'Desconocido',
+    ],
+    'usuario_id' => Auth::id(),
+]);
+
 
         return redirect()->route('productos.index')->with('success', 'Producto agregado correctamente.');
     }

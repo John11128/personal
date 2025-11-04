@@ -30,6 +30,11 @@
               <i class="fa fa-exchange"></i> <span>Movimientos</span>
             </a>
         </li>
+              <li>
+            <a href="{{ url('Reportes') }}">
+              <i class="fa fa-file"></i> <span>Reportes</span>
+            </a>
+        </li>
 
       </ul>
     </section>

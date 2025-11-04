@@ -13,7 +13,7 @@
             </div>
             <div class="box-body">
                 <a href="{{ route('movimientos.create') }}" class="btn btn-success btn-sm">+ Nuevo Movimiento</a>
-        <a href="{{ route('movimientos.desactivados') }}" class="btn btn-warning btn-sm pull-right">Movimientos Desactivados</a>
+
                 </div>
 
             <livewire:movement-table />

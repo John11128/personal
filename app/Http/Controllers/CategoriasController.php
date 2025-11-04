@@ -6,6 +6,7 @@ use App\Models\Categorias;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
+use App\Models\Reportes;
 
 class CategoriasController extends Controller
 {
@@ -33,6 +34,16 @@ class CategoriasController extends Controller
             'activo_c' => 1,
             'usuario_id' => Auth::id(),
         ]);
+        Reportes::create([
+    'tipo_r' => 'categoria',
+    'titulo_r' => 'Nueva categoría creada',
+    'descripcion_r' => "Se creó la categoría '{$request->nombre_c}'.",
+    'detalle_r' => [
+        'nombre' => $request->nombre_c,
+        'usuario' => Auth::user()->name ?? 'Desconocido',
+    ],
+    'usuario_id' => Auth::id(),
+]);
 
         return redirect()->route('categorias.index')->with('success', 'Categoría creada correctamente.');
     }

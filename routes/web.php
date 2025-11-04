@@ -7,6 +7,8 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProductosController;
 use App\Http\Controllers\CategoriasController;
 use App\Http\Controllers\MovimientosController;
+use App\Http\Controllers\ReportesController;
+
 
 // Route::get('/', function () {
 //     return view('welcome');
@@ -69,10 +71,17 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/Movimientos', [MovimientosController::class, 'store'])->name('movimientos.store');
     Route::get('/Movimientos/{id}/editar', [MovimientosController::class, 'edit'])->name('movimientos.edit');
     Route::put('/Movimientos/{id}', [MovimientosController::class, 'update'])->name('movimientos.update');
-    Route::get('/Movimientos/desactivados', [MovimientosController::class, 'desactivados'])->name('movimientos.desactivados');
     Route::post('/Movimientos/{id}/deshacer', [MovimientosController::class, 'deshacer'])->name('movimientos.deshacer');
-
 });
+
+//Reportes
+Route::middleware(['auth'])->group(function () {
+    Route::get('/Reportes', [ReportesController::class, 'index'])->name('reportes.index');
+    Route::get('/Reportes/exportar-excel', [ReportesController::class, 'exportExcel'])->name('reportes.export.excel');
+    Route::get('/Reportes/exportar-pdf', [ReportesController::class, 'exportPDF'])->name('reportes.export.pdf');
+    Route::post('/Reportes/importar-excel', [ReportesController::class, 'importExcel'])->name('reportes.import.excel');
+});
+
 
 Auth::routes();
 Auth::routes();

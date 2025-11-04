@@ -91,7 +91,46 @@ public function store(Request $request)
      */
     public function update(Request $request, string $id)
     {
-        //
+        $request->validate([
+            'fecha_m' => 'required|date',
+            'tipo_m' => 'required|in:Entrada,Salida',
+            'producto_id' => 'required|exists:productos,id_p',
+            'cantidad_m' => 'required|integer|min:1',
+        ]);
+
+        $movimiento = movimientos::findOrFail($id);
+        $producto = Productos::findOrFail($movimiento->producto_id);
+
+        // Revertir el efecto del movimiento original
+        if ($movimiento->tipo_m === 'Entrada') {
+            $producto->stock_p -= $movimiento->cantidad_m;
+        } elseif ($movimiento->tipo_m === 'Salida') {
+            $producto->stock_p += $movimiento->cantidad_m;
+        }
+
+        // Aplicar el nuevo movimiento
+        $nuevaCantidad = (int) $request->cantidad_m;
+        if ($request->tipo_m === 'Entrada') {
+            $producto->stock_p += $nuevaCantidad;
+        } elseif ($request->tipo_m === 'Salida') {
+            if ($producto->stock_p < $nuevaCantidad) {
+                return back()->withErrors(['cantidad_m' => 'No hay suficiente stock para realizar la salida.']);
+            }
+            $producto->stock_p -= $nuevaCantidad;
+        }
+
+        // Guardar los cambios en el producto
+        $producto->save();
+
+        // Actualizar el movimiento
+        $movimiento->update([
+            'fecha_m' => $request->input('fecha_m'),
+            'tipo_m' => $request->input('tipo_m'),
+            'producto_id' => $request->input('producto_id'),
+            'cantidad_m' => $request->input('cantidad_m'),
+        ]);
+
+        return redirect()->route('movimientos.index')->with('success', 'Movimiento actualizado correctamente.');
     }
 
     /**

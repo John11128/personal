@@ -9,7 +9,7 @@ class ReportesExport implements FromCollection, WithHeadings
 {
     public function collection()
     {
-        return Reportes::select('id', 'tipo_reporte', 'titulo', 'usuario_id', 'detalles', 'created_at')->get();
+        return Reportes::select('id_r', 'tipo_r', 'titulo_r', 'usuario_id', 'detalle_r', 'created_at')->get();
     }
 
     public function headings(): array

@@ -8,8 +8,8 @@ use App\Models\User;
 use App\Models\Productos;
 use App\Models\Categorias;
 use App\Models\Movimientos;
-use PDF;
-use Excel;
+use Barryvdh\DomPDF\Facade\Pdf as PDF;
+use Maatwebsite\Excel\Facades\Excel as Excel;
 
 class ReportesController extends Controller
 {

@@ -74,7 +74,7 @@ class UsuariosController extends Controller
         'tipo_r' => 'usuario',
         'titulo_r' => 'Usuario Creado',
         'descripcion_r' => "El usuario '{$user->name}' (ID: {$user->id}) fue creado por " . (Auth::user()->name ?? 'un proceso del sistema') . ".",
-        'detalle_r' => [ // Usamos los datos del nuevo usuario, no de productos.
+        'detalle_r' => [ // Usamos los datos del nuevo usuario
             'nuevo_usuario_id' => $user->id,
             'nombre' => $user->name,
             'email' => $user->email,

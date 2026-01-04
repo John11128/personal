@@ -29,7 +29,7 @@ class ReportesController extends Controller
     public function exportPDF()
     {
         $reportes = Reportes::latest()->get();
-        $pdf = PDF::loadView('reportes.pdf', compact('reportes'));
+        $pdf = PDF::loadView('modulos.reportes.pdf', compact('reportes'));
         return $pdf->download('reportes.pdf');
     }
      // 🔼 Importar desde Excel

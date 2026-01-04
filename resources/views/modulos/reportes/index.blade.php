@@ -9,9 +9,10 @@
     <section class="content">
         <div class="card">
             <div class="card-header">
+                <div class="box-content">
                  <div class="mb-3">
         <a href="{{ route('reportes.export.pdf') }}" class="btn btn-danger">Exportar PDF</a>
-        <a href="{{ route('reportes.export.excel') }}" class="btn btn-success">Exportar Excel</a>
+        <a href="{{ route('reportes.export.excel') }}" class="btn btn-success pull-right">Exportar Excel</a>
     </div>
     <form action="{{ route('reportes.import.excel') }}" method="POST" enctype="multipart/form-data">
         @csrf
@@ -21,8 +22,10 @@
         </div>
     </form>
             </div>
+            </div>
+            <br>
             <div class="card-body table-responsive">
-                <table class="table table-hover text-center">
+                <table class="table tablel table-hover text-center">
                     <thead>
                         <tr>
                             <th>Fecha</th>

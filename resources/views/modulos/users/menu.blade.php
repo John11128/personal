@@ -35,6 +35,11 @@
               <i class="fa fa-file"></i> <span>Reportes</span>
             </a>
         </li>
+        <li>
+            <a href="{{ url('Parametros') }}">
+              <i class="fa fa-cogs"></i> <span>Parámetros</span>
+            </a>
+        </li>
 
       </ul>
     </section>

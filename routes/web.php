@@ -82,6 +82,10 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/Reportes/importar-excel', [ReportesController::class, 'importExcel'])->name('reportes.import.excel');
 });
 
+//Parametros
+Route::get('Parametros', [App\Http\Controllers\ParametrosController::class, 'ParametrosIndex'])->name('Parametros.index');
+Route::get('Parametros/Agregar', [App\Http\Controllers\ParametrosController::class, 'AgregarParametros'])->name('Parametros.agregar');
+Route::put('Parametros/Guardar/{id}', [App\Http\Controllers\ParametrosController::class, 'GuardarParametros'])->name('Parametros.store');
 
 Auth::routes();
 Auth::routes();
